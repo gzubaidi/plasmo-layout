@@ -1,3 +1,7 @@
+## <small>1.0.1 (2025-11-25)</small>
+
+* fix: adjust indentation for layout decorator comments in test files ([3ffc50e](https://github.com/topazdom/plasmo-layout/commit/3ffc50e))
+
 ## 1.0.0 (2025-11-25)
 
 * fix: fix eslint issue with unused variable ([de56db4](https://github.com/topazdom/plasmo-layout/commit/de56db4))
