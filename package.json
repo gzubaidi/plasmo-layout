@@ -1,6 +1,6 @@
 {
   "name": "plasmo-layout",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Automate HTML layout generation for Plasmo browser extension components",
   "type": "module",
   "main": "dist/main.js",
@@ -8,6 +8,19 @@
   "bin": {
     "plasmo-layout": "./dist/cli/index.js"
   },
+  "license": "MIT",
+  "author": {
+    "name": "Topazdom Technologies Limited",
+    "email": "developers@topazdom.com",
+    "url": "https://topazdom.com"
+  },
+  "contributors": [
+    {
+      "name": "David Nzagha",
+      "email": "nzaghad@topazdom.com",
+      "url": "https://nzaghadavid.com"
+    }
+  ],
   "scripts": {
     "start": "node dist/main.js",
     "start:dev": "nodemon --ext js,ts,json,env --exec 'node --experimental-specifier-resolution=node --loader ts-node/esm' src/main.ts",
