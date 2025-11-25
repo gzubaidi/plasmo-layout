@@ -1,8 +1,9 @@
-import { dirname, basename, join, extname, relative } from 'node:path'
+import { basename, dirname, extname, join, relative } from 'node:path'
+
+import type { ResolvedConfig } from '../types/index.js'
 import fs from 'fs-extra'
 import { glob } from 'glob'
 import micromatch from 'micromatch'
-import type { ResolvedConfig } from '../types/index.js'
 
 /**
  * Generated file header comment for tracking
@@ -59,6 +60,15 @@ export function isExcluded(filePath: string, excludePatterns: string[], rootDir:
 }
 
 /**
+ * Normalize path separators to forward slashes for cross-platform consistency
+ * @param filePath - Path that may contain backslashes
+ * @returns Path with forward slashes only
+ */
+function normalizePath(filePath: string): string {
+  return filePath.replace(/\\/g, '/')
+}
+
+/**
  * Convert component file path to output HTML file path following Plasmo conventions
  *
  * Rules:
@@ -68,21 +78,23 @@ export function isExcluded(filePath: string, excludePatterns: string[], rootDir:
  * - src/tabs/settings.tsx -> src/tabs/settings.html
  *
  * @param componentPath - Absolute path to the component file
- * @returns Absolute path to the output HTML file
+ * @returns Absolute path to the output HTML file (always uses forward slashes)
  */
 export function getOutputHtmlPath(componentPath: string): string {
-  const dir = dirname(componentPath)
-  const base = basename(componentPath)
+  // Normalize input path to use forward slashes for consistent cross-platform behavior
+  const normalizedPath = normalizePath(componentPath)
+  const dir = normalizePath(dirname(normalizedPath))
+  const base = basename(normalizedPath)
   const nameWithoutExt = basename(base, extname(base))
 
   // If the file is named index.tsx/jsx, use the parent directory name
   if (nameWithoutExt === 'index') {
     const parentDirName = basename(dir)
-    return join(dir, `${parentDirName}.html`)
+    return `${dir}/${parentDirName}.html`
   }
 
   // Otherwise, use the file name
-  return join(dir, `${nameWithoutExt}.html`)
+  return `${dir}/${nameWithoutExt}.html`
 }
 
 /**
