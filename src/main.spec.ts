@@ -53,10 +53,10 @@ describe('Parser', function () {
     await fs.writeFile(
       testFile,
       `
-// @layout('default')
-export default function TestComponent() {
-  return <div>Test</div>;
-}
+      // @layout('default')
+      export default function TestComponent() {
+        return <div>Test</div>;
+      }
     `,
     )
 
@@ -76,10 +76,10 @@ export default function TestComponent() {
     await fs.writeFile(
       testFile,
       `
-// @layout('tabs.onboarding')
-export default function TestComponent() {
-  return <div>Test</div>;
-}
+      // @layout('tabs.onboarding')
+      export default function TestComponent() {
+        return <div>Test</div>;
+      }
     `,
     )
 
