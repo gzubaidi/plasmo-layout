@@ -28,7 +28,7 @@
   </a>
 </p>
 
-> We're seeking [consulting and engineering opportunities](mailto://contact@topazdom.com). With Love ❤️ from Biafra.
+> We're open to [technical consulting and engineering partnerships and contract opportunities](mailto://contact@topazdom.com). With Love ❤️ from Biafra.
 
 
 ## Overview
